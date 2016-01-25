@@ -1,0 +1,25 @@
+<%= form_for(@cerere_concediu) do |f| %>
+  <% if @cerere_concediu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cerere_concediu.errors.count, "error") %> prohibited this cerere_concediu from being saved:</h2>
+
+      <ul>
+      <% @cerere_concediu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data_inceput %><br>
+    <%= f.date_select :data_inceput %>
+  </div>
+  <div class="field">
+    <%= f.label :data_sfarsit %><br>
+    <%= f.date_select :data_sfarsit %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

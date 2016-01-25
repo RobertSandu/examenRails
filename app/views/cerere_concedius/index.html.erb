@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cerere Concedius</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data inceput</th>
+      <th>Data sfarsit</th>
+      <th>Aprobata</th>
+      <th>Aprobata</th>
+      <th>Email utilizator</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cerere_concedius.each do |cerere_concediu| %>
+      <tr>
+        <td><%= cerere_concediu.data_inceput %></td>
+        <td><%= cerere_concediu.data_sfarsit %></td>
+        <!--<td><%= cerere_concediu.user_id %></td>-->
+        <td><%= cerere_concediu.aprobata %></td>
+        <% if este_administrator %>
+          <% if cerere_concediu.aprobata == 0 %>
+            <td><%= link_to 'Aproba', cerere_concediu,  { :controller => :cerere_concedius, :action => :aproba, method: :post}%></td>
+            <td><%= link_to 'Aproba cererea', 
+            { :controller => 'cerere_concedius', :action => 'aproba', :id => cerere_concediu.id },
+            { :confirm => 'Are you sure?', :method => :post} %></td>
+          <% end %>
+        <% end %>
+
+        <td> <%= cerere_concediu.user.email %></td>
+        <!--<td><%= link_to 'Show', cerere_concediu %></td>
+        <td><%= link_to 'Edit', edit_cerere_concediu_path(cerere_concediu) %></td>
+        <td><%= link_to 'Destroy', cerere_concediu, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>Numarul de zile de concediu ramase <%= current_user.zile_concediu %></p>
+
+<br>
+<% if current_user.zile_concediu > 0 %>
+<%= link_to 'New Cerere concediu', new_cerere_concediu_path %>
+<% end %>

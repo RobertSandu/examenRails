@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data inceput:</strong>
+  <%= @cerere_concediu.data_inceput %>
+</p>
+
+<p>
+  <strong>Data sfarsit:</strong>
+  <%= @cerere_concediu.data_sfarsit %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cerere_concediu.user_id %>
+</p>
+
+<p>
+  <strong>Aprobata:</strong>
+  <%= @cerere_concediu.aprobata %>
+</p>
+
+<%= link_to 'Edit', edit_cerere_concediu_path(@cerere_concediu) %> |
+<%= link_to 'Back', cerere_concedius_path %>
